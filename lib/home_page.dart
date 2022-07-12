@@ -18,9 +18,22 @@ class _HomePageState extends State<HomePage> {
     ['Meditate', false, 0, 15],
   ];
 
-  void habitStarted(int index) {}
+  void habitStarted(int index) {
+    int habitStarted = 1;
+    setState(() {
+      habitList[index][habitStarted] = !habitList[index][habitStarted];
+    });
+  }
 
-  void settingsOpened(int index) {}
+  void settingsOpened(int index) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Settings for ' + habitList[index][0]),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
