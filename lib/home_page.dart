@@ -20,9 +20,18 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: const [
-            HabitTile(),
-            HabitTile(),
-            HabitTile(),
+            HabitTile(
+              habitName: 'Exercise',
+            ),
+            HabitTile(
+              habitName: 'Read',
+            ),
+            HabitTile(
+              habitName: 'Code',
+            ),
+            HabitTile(
+              habitName: 'Meditate',
+            ),
           ],
         ));
   }
