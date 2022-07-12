@@ -19,10 +19,22 @@ class HabitTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                // Progress circle
-                CircularPercentIndicator(
-                  radius: 40,
-                  percent: 0.7,
+                Container(
+                  height: 60,
+                  width: 60,
+                  child: Stack(
+                    children: [
+                      // Progress circle
+                      CircularPercentIndicator(
+                        radius: 60,
+                        //percent: 0.7,
+                      ),
+                      // Play pause button
+                      Center(
+                        child: Icon(Icons.play_arrow),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   width: 10,
