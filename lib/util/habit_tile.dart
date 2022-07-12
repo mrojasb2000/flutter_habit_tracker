@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HabitTile extends StatelessWidget {
   const HabitTile({Key? key}) : super(key: key);
@@ -16,24 +17,35 @@ class HabitTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    // Habit
-                    Text(
-                      'Exercise',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+              Row(children: [
+                // Progress circle
+                CircularPercentIndicator(
+                  radius: 40,
+                  percent: 0.7,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      // Habit
+                      Text(
+                        'Exercise',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
-                    // Progress
-                    Text(
-                      '2:00 / 10 = 20%',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ]),
-              Icon(Icons.settings),
+                      SizedBox(height: 4),
+                      // Progress
+                      Text(
+                        '2:00 / 10 = 20%',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ]),
+              ]),
+              const Icon(Icons.settings),
             ],
           )),
     );
