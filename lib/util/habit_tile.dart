@@ -3,7 +3,21 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HabitTile extends StatelessWidget {
   final String habitName;
-  const HabitTile({Key? key, required this.habitName}) : super(key: key);
+  final VoidCallback onTap;
+  final VoidCallback settingsTapped;
+  final int timeSpent;
+  final int timeGoal;
+  final bool habitStarted;
+
+  const HabitTile({
+    Key? key,
+    required this.habitName,
+    required this.onTap,
+    required this.settingsTapped,
+    required this.timeSpent,
+    required this.timeGoal,
+    required this.habitStarted,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +33,25 @@ class HabitTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                Container(
-                  height: 60,
-                  width: 60,
-                  child: Stack(
-                    children: [
-                      // Progress circle
-                      CircularPercentIndicator(
-                        radius: 60,
-                        //percent: 0.7,
-                      ),
-                      // Play pause button
-                      Center(
-                        child: Icon(Icons.play_arrow),
-                      ),
-                    ],
+                GestureDetector(
+                  onTap: onTap,
+                  child: SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: Stack(
+                      children: [
+                        // Progress circle
+                        CircularPercentIndicator(
+                          radius: 60,
+                          //percent: 0.7,
+                        ),
+                        // Play pause button
+                        Center(
+                          child: Icon(
+                              habitStarted ? Icons.pause : Icons.play_arrow),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -50,13 +68,16 @@ class HabitTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   // Progress
-                  const Text(
-                    '2:00 / 10 = 20%',
-                    style: TextStyle(color: Colors.grey),
+                  Text(
+                    '$timeSpent / $timeGoal',
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 ]),
               ]),
-              const Icon(Icons.settings),
+              GestureDetector(
+                onTap: settingsTapped,
+                child: const Icon(Icons.settings),
+              ),
             ],
           )),
     );
