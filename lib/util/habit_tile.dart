@@ -24,11 +24,14 @@ class HabitTile extends StatelessWidget {
                       'Exercise',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                     // Progress
-                    Text('2:00 / 10 = 20%'),
+                    Text(
+                      '2:00 / 10 = 20%',
+                      style: TextStyle(color: Colors.grey),
+                    ),
                   ]),
               Icon(Icons.settings),
             ],
