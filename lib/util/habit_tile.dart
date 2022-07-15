@@ -39,6 +39,11 @@ class HabitTile extends StatelessWidget {
     return '$mins:$secs';
   }
 
+  // calculate progress percentage
+  double percentCompleted() {
+    return timeSpent / (timeGoal * 60);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -89,7 +94,7 @@ class HabitTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   // Progress
                   Text(
-                    formatToMinSec(timeSpent) + '/' + timeGoal.toString(),
+                    '${formatToMinSec(timeSpent)}/$timeGoal = ${(percentCompleted() * 100).toStringAsFixed(0)}%',
                     style: const TextStyle(color: Colors.grey),
                   ),
                 ]),
